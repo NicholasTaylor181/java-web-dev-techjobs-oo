@@ -53,7 +53,49 @@ public class JobTest {
         assertFalse(testJobOne.equals(testJobTwo));
     }
 
+    @Test
+    public void testJobsToStringBlankLines() {
+        Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
+        System.out.println(testJob.toString());
+        assertTrue(testJob.toString().indexOf("\n") == 0);
+        assertTrue(testJob.toString().substring(testJob.toString().length() - 1).indexOf("\n") == 0);
+    }
+
+    @Test
+    public void testJobsToStringLabels() {
+        Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        System.out.println(testJob.toString());
+        assertTrue(testJob.toString().indexOf("ID:") == 1);
+        assertTrue(testJob.toString().contains("ID:"));
+        assertTrue(testJob.toString().contains("Name:"));
+        assertTrue(testJob.toString().contains("Employer:"));
+        assertTrue(testJob.toString().contains("Location:"));
+        assertTrue(testJob.toString().contains("Position Type:"));
+        assertTrue(testJob.toString().contains("Core Competency:"));
+    }
+
+    @Test
+    public void testJobsToStringData() {
+        Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        System.out.println(testJob.toString());
+        assertTrue(testJob.toString().contains("ID: " + testJob.getId()));
+        assertTrue(testJob.toString().contains("Name: Product tester"));
+        assertTrue(testJob.toString().contains("Employer: ACME"));
+        assertTrue(testJob.toString().contains("Location: Desert"));
+        assertTrue(testJob.toString().contains("Position Type: Quality control"));
+        assertTrue(testJob.toString().contains("Core Competency: Persistence"));
+    }
+
+    @Test
+    public void testJobsToStringBlankData() {
+        Job testJob = new Job("", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        assertTrue(jobOne.toString().contains("Employer: Data not available"));
+        assertTrue(testJob.toString().contains("Name: Data not available"));
+    }
 
 
 }

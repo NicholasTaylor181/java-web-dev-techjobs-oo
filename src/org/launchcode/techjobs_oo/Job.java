@@ -2,6 +2,8 @@ package org.launchcode.techjobs_oo;
 
 import java.util.Objects;
 
+import static java.util.Objects.isNull;
+
 public class Job {
 
     private int id;
@@ -82,6 +84,49 @@ public class Job {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        String iD = "\nID: " + this.getId();
+        String name;
+        String employer;
+        String location;
+        String positionType;
+        String coreCompetency;
+
+        if(isNull(this.getName()) || this.getName().isBlank()) {
+            name = "\nName: Data not available";
+        }else {
+            name = "\nName: " + this.getName();
+        }
+
+        if(isNull(this.getEmployer()) || this.getEmployer().getValue().isBlank()) {
+            employer = "\nEmployer: Data not available";
+        }else {
+            employer = "\nEmployer: " + this.getEmployer();
+        }
+
+        if(isNull(this.getLocation()) || this.getLocation().getValue().isBlank()) {
+            location = "\nLocation: Data not available";
+        }else {
+            location = "\nLocation: " + this.getLocation();
+        }
+
+        if(isNull(this.getPositionType()) || this.getPositionType().getValue().isBlank()) {
+            positionType = "\nPosition Type: Data not available";
+        }else {
+            positionType = "\nPosition Type: " + this.getPositionType();
+        }
+
+        if(isNull(this.getCoreCompetency()) || this.getCoreCompetency().getValue().isBlank()) {
+            coreCompetency = "\nCore Competency: Data not available";
+        }else {
+            coreCompetency = "\nCore Competency: " + this.getCoreCompetency();
+        }
+
+
+        return iD + name + employer + location + positionType + coreCompetency + "\n";
     }
 
     // TODO: Add two constructors - one to initialize a unique ID and a second to initialize the
