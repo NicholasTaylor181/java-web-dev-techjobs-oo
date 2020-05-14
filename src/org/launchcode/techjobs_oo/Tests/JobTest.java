@@ -57,7 +57,6 @@ public class JobTest {
     public void testJobsToStringBlankLines() {
         Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-        System.out.println(testJob.toString());
         assertTrue(testJob.toString().indexOf("\n") == 0);
         assertTrue(testJob.toString().substring(testJob.toString().length() - 1).indexOf("\n") == 0);
     }
@@ -66,7 +65,6 @@ public class JobTest {
     public void testJobsToStringLabels() {
         Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-        System.out.println(testJob.toString());
         assertTrue(testJob.toString().indexOf("ID:") == 1);
         assertTrue(testJob.toString().contains("ID:"));
         assertTrue(testJob.toString().contains("Name:"));
@@ -80,7 +78,6 @@ public class JobTest {
     public void testJobsToStringData() {
         Job testJob = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-        System.out.println(testJob.toString());
         assertTrue(testJob.toString().contains("ID: " + testJob.getId()));
         assertTrue(testJob.toString().contains("Name: Product tester"));
         assertTrue(testJob.toString().contains("Employer: ACME"));
